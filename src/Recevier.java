@@ -18,7 +18,7 @@ public class Recevier {
                 socket.receive(inPacket);
                 System.out.println("Packet empfangen...");
                 System.out.println(
-                        "Received: " + inPacket.getLength() + " bytes: " + new String(inPacket.getData()));
+                        "Received: " + inPacket.getLength() + " bytes: " + new String(inPacket.getData(), 0, inPacket.getLength()));
 
             }
         } catch (IOException e) {
