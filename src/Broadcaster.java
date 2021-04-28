@@ -4,21 +4,20 @@ import java.net.*;
 
 import java.io.IOException;
 public class Broadcaster extends Thread{
-    private static final int PORT = 4711;
+    private static final int PORT = 7777;
     private static final int BUFSIZE = 512;
 
     public static void main(String[] args) {
 
-        try(DatagramSocket socket = new DatagramSocket(PORT)) {
-            InetAddress inetAddress= InetAddress.getByName("255.255.255.255"); //eigene Broadcast Addresse zur generischen geaendert
-            DatagramPacket outPacket = new DatagramPacket(new byte[BUFSIZE], BUFSIZE, inetAddress, 7777);
+        try(DatagramSocket socket = new DatagramSocket()) {
+            InetAddress inetAddress= InetAddress.getByName("192.168.0.255"); //eigene Broadcast Addresse zur generischen geaendert
+            DatagramPacket outPacket = new DatagramPacket(new byte[BUFSIZE], BUFSIZE, inetAddress, PORT);
 
-            // socket.setBroadcast(true);
             System.out.println("Server gestartet");
 
             while (true) {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(20000);
                 } catch (InterruptedException e) {
                     System.out.println(e);
                 }

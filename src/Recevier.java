@@ -13,13 +13,13 @@ public class Recevier {
         try(DatagramSocket socket = new DatagramSocket(PORT)){
             DatagramPacket inPacket = new DatagramPacket(new byte[BUFSIZE], BUFSIZE);
             System.out.println("Server gestartet");
-
+            int i = 0;
             while(true){
                 socket.receive(inPacket);
                 System.out.println("Packet empfangen...");
-                System.out.println(
+                System.out.println(i +
                         "Received: " + inPacket.getLength() + " bytes: " + new String(inPacket.getData(), 0, inPacket.getLength()));
-
+                i++;
             }
         } catch (IOException e) {
             System.err.println(e);
